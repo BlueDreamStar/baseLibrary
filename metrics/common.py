@@ -11,19 +11,20 @@ from time import ctime,sleep
 import scipy.stats as stats
 
 # def logging(string):
-
 #     output=str(datetime.datetime.now())+":"+str(string)
-
 #     open("%s" %log_file_name, "a").write(output+"\n")
 
-
-def normalize_1d(a):
+## normlize one-dimensional array
+def normalizeOneD(a):
+    print(a)
+    a = np.array(a)
     s = np.sum(a)
     if s != 0.0 and len(a) != 1:
-        np.divide(a, s, a)
+        a = np.true_divide(a,s)
     return a
 
-def normalizedmatrix(matrix):
+## normlize matrix
+def normalizeMatrix(matrix):
     tempmatrix = matrix.copy()
     tempsum = np.sum(tempmatrix, axis = 1)
     tempsum.shape = [len(tempsum), 1]
@@ -104,35 +105,34 @@ def limitmatrix( matrix , num=6):
     tempmat[tempmask] = 0
     return tempmat 
 
+
+#   compute the rmse value by two matrix
 def rmseValue(matrixA, matrixB):
 
     differences = matrixA - matrixB                       #the DIFFERENCEs.
-
     differences_squared = differences ** 2                    #the SQUAREs of ^
-
     mean_of_differences_squared = differences_squared.mean()  #the MEAN of ^
-
     rmse_val = np.sqrt(mean_of_differences_squared)           #ROOT of ^
 
     return rmse_val
 
+#   compute the mae value by two matrix
 def maeValue(matrixA, matrixB):
 
 	differences = matrixA - matrixB
-
 	mae_val = np.abs(differences).mean()
-
 	return mae_val
 
+#   compute the exp value by dt (distance of two events) & W
 def g(dt, W = 0.25):
 	return W * np.exp(-W * dt)
 
+#   compute the exp value by dt (distance of two events) & W
 def G(dt, W = 0.25):
 	return 1.0 - np.exp(-W * dt)
 
-def zero_to_minvalue(matrix):
-    # print("matrix")
-    # print(matrix)
+#   transfer the zeros to the minValue for a specific matrix
+def zeroToMinvalue(matrix):
     mask = matrix <= 0
     tempmatrix = matrix[np.nonzero(np.abs(matrix))]
     if len(tempmatrix) == 0:
@@ -140,10 +140,10 @@ def zero_to_minvalue(matrix):
     else:
         tempvalue = np.min(tempmatrix) / 1E-6
     matrix[mask] = tempvalue
-    # print(matrix)
     return matrix
 
-def zero_to_one(matrix):
+#   transfer the zeros to ones for a specific matrix
+def zeroToOne(matrix):
     tempmatrix = matrix.copy()
     mask = tempmatrix <= 0
     tempmatrix[mask] = 1
