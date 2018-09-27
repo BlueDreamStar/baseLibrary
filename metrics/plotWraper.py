@@ -1,21 +1,19 @@
 # Copyright 2018 BlueDreamStar. All rights reserved.
 # Use of this source code is governed by a MIT-style
 # license that can be found in the LICENSE file.
-
-import scipy.io as sio
 import numpy as np
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter  
-import os
 from pylab import *
 import matplotlib.pyplot as plt
 
-## wraper the plot function
+## define the font
 font = {'family' : 'serif',  
         'color'  : 'black',  
         'weight' : 'normal',  
         'size'   : 16,  
         }
 
+## wraper the plot function
 def plotAndSaveFigure(iters, data, colors, labels, axis_label, outSaveFile, lengendLoc="upper right", lwValue=1.6, multiNum=2, xlimit=None, ylimit=None):
 	if len(colors) <= 0: return
 # 	figure(1)
@@ -35,4 +33,3 @@ def plotAndSaveFigure(iters, data, colors, labels, axis_label, outSaveFile, leng
 	plt.legend(loc=lengendLoc, prop={'size': 16}) 
 	foo_fig.savefig('%s.pdf' %(outSaveFile), bbox_inches='tight', format='pdf', dpi=1000)
 	clf()
-
