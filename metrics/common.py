@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+# @Author: dreamBoy
+# @Date:   2018-10-30 17:54:17
+# @Email:  wpf2106@gmail.com
+# @Desc:   Welcome to my world!
+# @Motto:  Brave & Naive!
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2018-10-30 18:03:02
+
 from __future__ import division 
 import numpy as np
 import sys
@@ -10,14 +19,17 @@ import threading
 from time import ctime,sleep
 import scipy.stats as stats
 
-# def logging(string):
-#     output=str(datetime.datetime.now())+":"+str(string)
-#     open("%s" %log_file_name, "a").write(output+"\n")
+
+def logStr(log_file_name, string):
+    output=str(datetime.datetime.now())+":"+str(string)
+    open("%s" %log_file_name, "a").write(output+"\n")
+    #print output
+
 
 ## normlize one-dimensional array
 def normalizeOneD(a):
-    print(a)
-    a = np.array(a)
+    # print(a)
+    # a = np.array(a)
     s = np.sum(a)
     if s != 0.0 and len(a) != 1:
         a = np.true_divide(a,s)

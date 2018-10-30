@@ -1,6 +1,11 @@
-# Copyright 2018 BlueDreamStar. All rights reserved.
-# Use of this source code is governed by a MIT-style
-# license that can be found in the LICENSE file.
+# -*- coding: utf-8 -*-
+# @Author: dreamBoy
+# @Date:   2018-09-27 23:41:05
+# @Email:  wpf2106@gmail.com
+# @Desc:   Welcome to my world!
+# @Motto:  Brave & Naive!
+# @Last Modified by:   BlueDreamStar
+# @Last Modified time: 2018-10-30 18:07:03
 import numpy as np
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter  
 from pylab import *
