@@ -5,8 +5,7 @@
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
 # @Last Modified by:   BlueDreamStar
-# @Last Modified time: 2018-10-30 18:03:02
-
+# @Last Modified time: 2019-04-12 14:21:04
 from __future__ import division 
 import numpy as np
 import sys
@@ -20,11 +19,29 @@ from time import ctime,sleep
 import scipy.stats as stats
 
 
-def logStr(log_file_name, string):
+##  append a str with timestamp into a given file
+def log_str(log_file_name, string):
     output=str(datetime.datetime.now())+":"+str(string)
     open("%s" %log_file_name, "a").write(output+"\n")
     #print output
 
+##  append a str into a giving file
+def append_str(saveFile, string):
+    open("%s" %saveFile, "a").write(string+"\n")
+    
+
+## create dir if not exists
+def create_dir(target_dir):
+    if not os.path.exists(target_dir):
+        os.makedirs(target_dir)
+        
+## delete file if exists
+def delete_file(target_file):
+    if(os.path.exists(target_file)):
+        os.remove(target_file)
+        # print('File deleted successfully!')
+    # else:
+    #     print("File is not exists!")
 
 ## normlize one-dimensional array
 def normalizeOneD(a):
