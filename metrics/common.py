@@ -5,7 +5,7 @@
 # @Desc:   Welcome to my world!
 # @Motto:  Brave & Naive!
 # @Last Modified by:   BlueDreamStar
-# @Last Modified time: 2019-04-12 14:21:04
+# @Last Modified time: 2019-07-28 14:48:01
 from __future__ import division 
 import numpy as np
 import sys
@@ -44,7 +44,7 @@ def delete_file(target_file):
     #     print("File is not exists!")
 
 ## normlize one-dimensional array
-def normalizeOneD(a):
+def normalize_one_dimension(a):
     # print(a)
     # a = np.array(a)
     s = np.sum(a)
@@ -53,13 +53,13 @@ def normalizeOneD(a):
     return a
 
 ## normlize matrix
-def normalizeMatrix(matrix):
+def normalize_matrix(matrix):
     tempmatrix = matrix.copy()
     tempsum = np.sum(tempmatrix, axis = 1)
     tempsum.shape = [len(tempsum), 1]
     return tempmatrix / tempsum
 
-def accValue(vector1, vector2):
+def acc_value(vector1, vector2):
     if len(vector1) != len(vector2):
         print("error")
         return
@@ -125,7 +125,7 @@ def accValue(vector1, vector2):
     # print(tempEntroy)      
     return paramout
 #### limit for exp
-def limitmatrix( matrix , num=6):
+def limit_matrix( matrix , num=6):
     tempmat = matrix.copy()
     tempmax = np.max( tempmat, axis= 1)
     tempmax.shape = [ len(tempmax), 1]
@@ -136,7 +136,7 @@ def limitmatrix( matrix , num=6):
 
 
 #   compute the rmse value by two matrix
-def rmseValue(matrixA, matrixB):
+def rmse_value(matrixA, matrixB):
 
     differences = matrixA - matrixB                       #the DIFFERENCEs.
     differences_squared = differences ** 2                    #the SQUAREs of ^
@@ -146,22 +146,22 @@ def rmseValue(matrixA, matrixB):
     return rmse_val
 
 #   compute the mae value by two matrix
-def maeValue(matrixA, matrixB):
+def mae_value(matrixA, matrixB):
 
 	differences = matrixA - matrixB
 	mae_val = np.abs(differences).mean()
 	return mae_val
 
 #   compute the exp value by dt (distance of two events) & W
-def g(dt, W = 0.25):
+def small_g(dt, W = 0.25):
 	return W * np.exp(-W * dt)
 
 #   compute the exp value by dt (distance of two events) & W
-def G(dt, W = 0.25):
+def big_g(dt, W = 0.25):
 	return 1.0 - np.exp(-W * dt)
 
 #   transfer the zeros to the minValue for a specific matrix
-def zeroToMinvalue(matrix):
+def zero_to_minvalue(matrix):
     mask = matrix <= 0
     tempmatrix = matrix[np.nonzero(np.abs(matrix))]
     if len(tempmatrix) == 0:
@@ -172,7 +172,7 @@ def zeroToMinvalue(matrix):
     return matrix
 
 #   transfer the zeros to ones for a specific matrix
-def zeroToOne(matrix):
+def zero_to_one(matrix):
     tempmatrix = matrix.copy()
     mask = tempmatrix <= 0
     tempmatrix[mask] = 1
